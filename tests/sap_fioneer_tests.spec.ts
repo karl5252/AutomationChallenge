@@ -7,17 +7,17 @@ test('verify Key Facts section exists', async ({ page }) => {
   await expect(page.locator('.row .col h2').filter({ hasText: 'Key Facts' })).toBeVisible();
 });
 
-test ('verify user is redirected to KSG engine when clicking on "ESG Engine" link', async ({ page }) => {
+test ('verify user is redirected to ESG engine when clicking on "ESG Engine" link', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
 
-  const ksgEngineBookmark = page.locator('#masthead').getByRole('link', { name: 'Finance & ESG' });
-  await expect(ksgEngineBookmark).toBeVisible();
+  const esgEngineBookmark = page.locator('#masthead').getByRole('link', { name: 'Finance & ESG' });
+  await expect(esgEngineBookmark).toBeVisible();
 
-  await ksgEngineBookmark.hover();
-  const ksgEngineLink = page.getByRole('link', { name: 'ESG KPI Engine' });
-  await expect(ksgEngineLink).toBeVisible();
+  await esgEngineBookmark.hover();
+  const esgEngineLink = page.getByRole('link', { name: 'ESG KPI Engine' });
+  await expect(esgEngineLink).toBeVisible();
 
-  await ksgEngineLink.click();
+  await esgEngineLink.click();
   await expect(page).toHaveTitle('Stay audit-ready with the ESG KPI Engine | SAP Fioneer');
 
 });
@@ -34,11 +34,12 @@ test ('verify work email validation on contact form', async ({ page }) => {
   await expect(page.locator('iframe[title="Form 0"]')).toBeVisible();
 
   const contactFormIframe = page.frameLocator('iframe[title="Form 0"]');
-  if (!contactFormIframe) {
-    throw new Error('Contact form iframe not found');
-  }
   
   const emailInput = contactFormIframe.locator('input[name="email"]');
   await expect(emailInput).toBeVisible();
+
+  await emailInput.fill('342323');
+  await emailInput.blur(); // Trigger validation
+  await expect(contactFormIframe.locator('[role="alert"]')).toHaveText(/.+/);
 
 });
