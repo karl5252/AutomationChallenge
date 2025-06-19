@@ -20,6 +20,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/karl5252/AutomationChallenge.git
+
 cd automationchallenge
 ```
 
