@@ -29,4 +29,14 @@ test ('verify work email validation on contact form', async ({ page }) => {
 
   await getInTouchBtn.click();
   await expect(page).toHaveTitle('SAP Fioneer | Contact | Get in touch!');
+
+  // iframe selector for the contact form
+  const contactFormIframe = page.frameLocator('iframe[title="Form 0"]');
+  if (!contactFormIframe) {
+    throw new Error('Contact form iframe not found');
+  }
+  
+  const emailInput = contactFormIframe.locator('input[name="email"]');
+  await expect(emailInput).toBeVisible();
+
 });
