@@ -12,7 +12,18 @@ This repository contains a Playwright test suite developed as part of a QA autom
 Kept intentionally flat and simple. With only three test cases, introducing Page Object Models or fixtures would reduce readability rather than improve it.  
 However, `TODO` comments are left in the code to highlight where abstractions (like POM or BasePage) could be introduced as the suite grows.
 
-## Installation
+## Getting Started
+
+**Requires Node.js 18+ and npm**
+
+Clone the repository:
+
+```bash
+git clone https://github.com/karl5252/AutomationChallenge.git
+cd automationchallenge
+```
+
+### Installation
 
 Install dependencies:
 ```bash
