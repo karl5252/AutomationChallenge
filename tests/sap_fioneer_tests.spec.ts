@@ -24,8 +24,9 @@ test ('verify user is redirected to KSG engine when clicking on "ESG Engine" lin
 
 test ('verify work email validation on contact form', async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
-  await expect(page.getByRole('link', { name: 'Contact us' })).toBeVisible();
+  const getInTouchBtn = page.locator('#masthead').getByRole('link', { name: 'Get in touch' });
+  await expect(getInTouchBtn).toBeVisible();
 
-  await page.getByRole('link', { name: 'Contact us' }).click();
+  await getInTouchBtn.click();
   await expect(page).toHaveTitle('SAP Fioneer | Contact | Get in touch!');
 });
