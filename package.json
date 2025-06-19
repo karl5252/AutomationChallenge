@@ -1,14 +1,20 @@
 {
   "name": "automationchallenge",
   "version": "1.0.0",
-  "description": "QA Automation Challenge",
+  "description": "QA Automation Challenge for itnerview",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test --grep='@smoke'",
+    "test:nav": "npx playwright test --grep='@navigation'",
+    "test:forms": "npx playwright test --grep='@forms'"
+  },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Karol Michalik",
+  "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.53.1",
-    "@types/node": "^24.0.3"
+    "@types/node": "^24.0.3",
+    "typescript": "^5.2.2"
   }
 }
