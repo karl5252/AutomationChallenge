@@ -21,3 +21,11 @@ test ('verify user is redirected to KSG engine when clicking on "ESG Engine" lin
   await expect(page).toHaveTitle('Stay audit-ready with the ESG KPI Engine | SAP Fioneer');
 
 });
+
+test ('verify work email validation on contact form', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await expect(page.getByRole('link', { name: 'Contact us' })).toBeVisible();
+
+  await page.getByRole('link', { name: 'Contact us' }).click();
+  await expect(page).toHaveTitle('SAP Fioneer | Contact | Get in touch!');
+});
