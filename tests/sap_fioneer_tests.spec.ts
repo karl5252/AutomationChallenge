@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-test('verify Key Facts section exists', async ({ page }) => {
+test('verify Key Facts section exists',{tag: "@smoke"}, async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   // TODO: Request data-testid attributes from dev team for better test stability
   // TODO: Consider moving to a page object model for better maintainability once it grows
   await expect(page.locator('.row .col h2').filter({ hasText: 'Key Facts' })).toBeVisible();
 });
 
-test ('verify user is redirected to ESG engine when clicking on "ESG Engine" link', async ({ page }) => {
+test ('verify user is redirected to ESG engine when clicking on "ESG Engine" link',{tag: "@@navigation"}, async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
 
   const esgEngineBookmark = page.locator('#masthead').getByRole('link', { name: 'Finance & ESG' });
@@ -22,7 +22,7 @@ test ('verify user is redirected to ESG engine when clicking on "ESG Engine" lin
 
 });
 
-test ('verify work email validation on contact form', async ({ page }) => {
+test ('verify work email validation on contact form',{tag: "@forms"}, async ({ page }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
   const getInTouchBtn = page.locator('#masthead').getByRole('link', { name: 'Get in touch' });
   await expect(getInTouchBtn).toBeVisible();
