@@ -30,7 +30,9 @@ test ('verify work email validation on contact form', async ({ page }) => {
   await getInTouchBtn.click();
   await expect(page).toHaveTitle('SAP Fioneer | Contact | Get in touch!');
 
-  // iframe selector for the contact form
+  // iframe
+  await expect(page.locator('iframe[title="Form 0"]')).toBeVisible();
+
   const contactFormIframe = page.frameLocator('iframe[title="Form 0"]');
   if (!contactFormIframe) {
     throw new Error('Contact form iframe not found');
