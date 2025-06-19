@@ -13,4 +13,11 @@ test ('verify user is redirected to KSG engine when clicking on "KSG Engine" lin
   const ksgEngineBookmark = page.locator('#menu-item-29979').getByRole('link', { name: 'Finance & ESG' });
   await expect(ksgEngineBookmark).toBeVisible();
 
+  await ksgEngineBookmark.hover();
+  const ksgEngineLink = page.getByRole('link', { name: 'ESG KPI Engine' });
+  await expect(ksgEngineLink).toBeVisible();
+
+  await ksgEngineLink.click();
+
+
 });
